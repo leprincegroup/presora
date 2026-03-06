@@ -66,8 +66,14 @@ export function BrandStep({ onComplete, onSkip, onBack }: BrandStepProps) {
       });
 
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Failed to analyze brand");
+        let errorMsg = "Failed to analyze brand";
+        try {
+          const data = await res.json();
+          errorMsg = data.error || errorMsg;
+        } catch {
+          errorMsg = `Server error (${res.status}). Please try again.`;
+        }
+        throw new Error(errorMsg);
       }
 
       const brand: BrandAnalysis = await res.json();

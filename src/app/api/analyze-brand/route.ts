@@ -1,6 +1,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 
+export const maxDuration = 60;
+
 const client = new Anthropic();
 
 const SYSTEM_PROMPT = `You are a world-class brand design system analyst. Analyze the provided visual asset (screenshot, image, or PDF) and extract a PRECISE design system.

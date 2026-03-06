@@ -2,6 +2,8 @@ import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 import { BrandAnalysis, BriefData } from "../../types";
 
+export const maxDuration = 60;
+
 const client = new Anthropic();
 
 function buildBrandRules(brand: BrandAnalysis): string {
@@ -148,7 +150,7 @@ Generate ${lengthGuide} slides. Use your judgment for the exact count. Make it c
 
     const message = await client.messages.create({
       model: "claude-sonnet-4-20250514",
-      max_tokens: 4096,
+      max_tokens: 8192,
       system: buildSystemPrompt(cleanBrand as BrandAnalysis),
       messages: [{ role: "user", content: userPrompt }],
     });

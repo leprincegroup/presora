@@ -69,8 +69,14 @@ export function GenerateStep({
       });
 
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Failed to generate presentation");
+        let errorMsg = "Failed to generate presentation";
+        try {
+          const data = await res.json();
+          errorMsg = data.error || errorMsg;
+        } catch {
+          errorMsg = `Server error (${res.status}). Please try again.`;
+        }
+        throw new Error(errorMsg);
       }
 
       const data: { title: string; slides: SlideData[] } = await res.json();
