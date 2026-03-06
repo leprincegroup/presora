@@ -38,7 +38,7 @@ export function PresentationViewer({
   const [regenFeedback, setRegenFeedback] = useState("");
   const [isRegenerating, setIsRegenerating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const feedbackInputRef = useRef<HTMLTextAreaElement>(null);
   const total = presentation.slides.length;
 

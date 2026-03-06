@@ -151,6 +151,7 @@ export default function DemoPage() {
     <PresentationViewer
       presentation={DEMO_PRESENTATION}
       onBack={() => (window.location.href = "/")}
+      onUpdatePresentation={() => {}}
     />
   );
 }
