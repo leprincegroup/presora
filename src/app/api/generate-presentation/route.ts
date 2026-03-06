@@ -37,8 +37,8 @@ JSON SCHEMA: {"title":"string","slides":[SlideObject]}
 SLIDE TYPES (use "type" field):
 - hero: title, subtitle?, body?, accentWords?:string[], backgroundVariant
 - content: title, body?, bullets?:string[], accentWords?:string[], backgroundVariant
-- stats: title, stats:[{value,label,description?}], backgroundVariant
-- features: title, features:[{title,description,color?}], backgroundVariant (color: optional hex for bold colored cards)
+- stats: title, stats:[{value,label,description?,icon?}], backgroundVariant
+- features: title, features:[{title,description,color?,icon}], backgroundVariant (color: optional hex for bold colored cards)
 - comparison: title, columns:[{title,items:string[]}], backgroundVariant
 - timeline: title, timelineItems:[{label,description}], backgroundVariant
 - quote: quote:{text,attribution}, backgroundVariant
@@ -52,7 +52,29 @@ backgroundVariant: "primary"|"dark"|"gradient"|"light"|"accent". Use gradient fo
 
 accentWords: array of words/phrases from the title that should be highlighted in the brand accent color. Use this to create visual emphasis like "Making athletic sports items look sexy" where "sports items" and "sexy" are accent-colored.
 
-RULES: Start hero, end cta. Vary types — no consecutive repeats. Use section-break between topics. Headlines <8 words, bullets <12 words. Stats: big impactful numbers. Features: 3-6 items. Comparison: 2-3 columns. Use table for structured data/metrics. Use big-statement for impactful one-liners with accentWords. Use accentWords on at least 3-4 slides for visual variety. Match the brand's mood and tone exactly — if the brand is minimal, be minimal. If bold, be bold.`;
+ICON SYSTEM — CRITICAL for features and stats:
+The "icon" field on features and stats maps to Lucide icon names. Pick icons that PRECISELY match the content context. Examples:
+- Boxing/fighting: "swords", "shield", "trophy", "flame"
+- Money/revenue: "dollar-sign", "trending-up", "wallet", "coins"
+- Users/audience: "users", "eye", "user-check", "megaphone"
+- Technology/digital: "monitor", "smartphone", "wifi", "cpu"
+- Social media: "share-2", "heart", "message-circle", "at-sign"
+- Content/media: "play", "film", "camera", "tv"
+- Growth/analytics: "bar-chart-3", "trending-up", "target", "pie-chart"
+- Time/schedule: "clock", "calendar", "timer", "hourglass"
+- Location/venue: "map-pin", "building", "flag", "compass"
+- Communication: "mail", "phone", "send", "message-square"
+- Security/trust: "shield-check", "lock", "check-circle", "award"
+- Branding/design: "palette", "pen-tool", "layers", "sparkles"
+- Shopping/commerce: "shopping-cart", "tag", "credit-card", "package"
+- Sports/fitness: "dumbbell", "medal", "timer", "zap"
+- Food/restaurant: "utensils", "chef-hat", "coffee", "wine"
+- Travel: "plane", "globe", "map", "navigation"
+- Healthcare: "heart-pulse", "stethoscope", "pill", "activity"
+- Education: "graduation-cap", "book-open", "brain", "lightbulb"
+ALWAYS choose icons that reflect the actual content of each feature/stat — never use generic icons. Think about what visual would best represent each specific item.
+
+RULES: Start hero, end cta. Vary types — no consecutive repeats. Use section-break between topics. Headlines <8 words, bullets <12 words. Stats: big impactful numbers. Features: 3-6 items with contextual icons. Comparison: 2-3 columns. Use table for structured data/metrics. Use big-statement for impactful one-liners with accentWords. Use accentWords on at least 3-4 slides for visual variety. Match the brand's mood and tone exactly — if the brand is minimal, be minimal. If bold, be bold.`;
 }
 
 export async function POST(req: NextRequest) {

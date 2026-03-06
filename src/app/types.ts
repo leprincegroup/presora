@@ -42,8 +42,8 @@ export interface SlideData {
   subtitle?: string;
   body?: string;
   bullets?: string[];
-  stats?: { value: string; label: string; description?: string }[];
-  features?: { title: string; description: string; color?: string }[];
+  stats?: { value: string; label: string; description?: string; icon?: string }[];
+  features?: { title: string; description: string; color?: string; icon?: string }[];
   columns?: { title: string; items: string[] }[];
   quote?: { text: string; attribution: string };
   timelineItems?: { label: string; description: string }[];
